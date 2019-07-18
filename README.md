@@ -1,7 +1,7 @@
 # QuantoSobra: Tarefas para Candidatos
 
 Este repositório contém o projeto base para ser utilizado nas tarefas dos candidatos às
-[vagas de desenvolvedor no QuantoSobra][vagas].
+[vagas de desenvolvedor no QuantoSobra][vagas].!
 
 
 ## Requisitos
