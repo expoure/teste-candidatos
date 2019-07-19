@@ -4,7 +4,8 @@ namespace App\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
-
+use Symfony\Component\Validator\Constraints as Assert;
+use Misd\PhoneNumberBundle\Validator\Constraints\PhoneNumber as AssertPhoneNumber;
 
 /**
  * Cliente
@@ -27,6 +28,18 @@ class Cliente
      * @var string
      *
      * @ORM\Column(name="nome", type="string", length=200)
+     * 
+     * @Assert\NotBlank(
+     *     message = "Nome é obrigatório.",
+     * )
+     * 
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 200,
+     *      minMessage = "O nome precisa ter no mínimo {{ limit }} letras.",
+     *      maxMessage = "O nome não pode ter mais que {{ limit }} letras."
+     * )
+     * 
      */
     private $nome;
 
@@ -34,6 +47,16 @@ class Cliente
      * @var string
      *
      * @ORM\Column(name="telefone", type="string", length=11)
+     * 
+     * @Assert\NotBlank(
+     *     message = "O preenchimento do telefone é obrigatório.",
+     * )
+     * 
+     * @AssertPhoneNumber(
+     *     defaultRegion="BR",
+     *      message = "Inválido!",
+     *)
+     * 
      */
     private $telefone;
 
@@ -41,6 +64,15 @@ class Cliente
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255)
+     * 
+     * @Assert\NotBlank(
+     *      message = "E-mail obrigatório.",
+     * )
+     * 
+     * @Assert\Email(
+     *      message = "O email {{ value }} não é válido.",
+     *      checkMX = true
+     * )
      */
     private $email;
 
@@ -48,6 +80,18 @@ class Cliente
      * @var string
      *
      * @ORM\Column(name="endereco", type="string", length=500)
+     * 
+     * @Assert\NotBlank(
+     *     message = "Endereço é obrigatório.",
+     * )
+     * 
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 500,
+     *      minMessage = "O endereço precisa ter pelo menos {{ limit }} letras.",
+     *      maxMessage = "O endereço não pode ser maior que {{ limit }} letras."
+     * )
+     * 
      */
     private $endereco;
 

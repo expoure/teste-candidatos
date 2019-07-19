@@ -3,6 +3,7 @@
 namespace App\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Venda
@@ -25,6 +26,15 @@ class Venda
      * @var \DateTime
      *
      * @ORM\Column(name="data", type="datetime")
+     * 
+     * @Assert\NotBlank(
+     *     message = "O preenchimento da data é obrigatório.",
+     * )
+     * 
+     * @Assert\DateTime(
+     *      message = "Data inválida.",
+     * )
+     * 
      */
     private $data;
 
@@ -32,6 +42,11 @@ class Venda
      * @var string
      *
      * @ORM\Column(name="valor", type="decimal")
+     * 
+     * @Assert\NotBlank(
+     *     message = "Valor é obrigatório.",
+     * )
+     * 
      */
     private $valor;
 
@@ -39,6 +54,11 @@ class Venda
      * @var string
      *
      * @ORM\Column(name="comissao", type="decimal")
+     * 
+     * @Assert\NotBlank(
+     *     message = "O preenchimento da comissão é obrigatório.",
+     * )
+     * 
      */
     private $comissao;
 
@@ -47,6 +67,11 @@ class Venda
      *
      * @ORM\ManyToOne(targetEntity="Empresa", inversedBy="vendas")
      * @ORM\JoinColumn(name="empresa_id", referencedColumnName="id")
+     * 
+     * @Assert\NotBlank(
+     *     message = "Uma empresa deve ser selecionada.",
+     * )
+     * 
      */
     private $empresa;
 
@@ -55,6 +80,10 @@ class Venda
      *
      * @ORM\ManyToOne(targetEntity="Cliente", inversedBy="compras")
      * @ORM\JoinColumn(name="cliente_id", referencedColumnName="id")
+     * 
+     * @Assert\NotBlank(
+     *     message = "Um cliente deve ser selecionada.",
+     * )
      */
     private $cliente;
 
@@ -139,5 +168,54 @@ class Venda
     public function getComissao()
     {
         return $this->comissao;
+    }
+
+
+    /**
+     * Set empresa
+     *
+     * @param string $empresa
+     *
+     * @return Venda
+     */
+    public function setEmpresa($empresa)
+    {
+        $this->empresa = $empresa;
+
+        return $this;
+    }
+
+    /**
+     * Get empresa
+     *
+     * @return string
+     */
+    public function getEmpresa()
+    {
+        return $this->empresa;
+    }
+
+    /**
+     * Set cliente
+     *
+     * @param string $cliente
+     *
+     * @return Venda
+     */
+    public function setCliente($cliente)
+    {
+        $this->cliente = $cliente;
+
+        return $this;
+    }
+
+    /**
+     * Get cliente
+     *
+     * @return string
+     */
+    public function getCliente()
+    {
+        return $this->cliente;
     }
 }

@@ -88,6 +88,8 @@ class ClienteController extends FOSRestController
             $em->persist($entity);
             $em->flush();
             return $this->view(['cliente' => $entity], Response::HTTP_OK);
+        } else {
+            return $this->view(['errors' => $form->getErrors()->getForm()], Response::HTTP_BAD_REQUEST);
         }
     }
 
@@ -121,7 +123,9 @@ class ClienteController extends FOSRestController
             $em->persist($entity);
             $em->flush();
             return $this->view(['cliente' => $entity], Response::HTTP_OK);
-        }
+        } else {
+            return $this->view(['errors' => $form->getErrors()->getForm()], Response::HTTP_BAD_REQUEST);
+        } 
     }
 
     /**
