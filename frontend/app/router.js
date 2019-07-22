@@ -59,10 +59,10 @@ Router.map(function() {
       this.route('editar', {path: '/editar/:id'});
       this.route('excluir', {path: '/excluir/:id'});
   });
-  this.route('vendas', function() {
-    this.route('novo');
-    this.route('editar');
-    this.route('excluir');
+  this.route('vendas', {}, function() {
+    this.route('novo', {});
+    this.route('editar', {path: '/editar/:id'});
+    this.route('excluir', {path: '/excluir/:id'});
   });
 });
 

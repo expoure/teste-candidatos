@@ -1,1 +1,44 @@
-{{outlet}}
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h2>
+            <i class="fa fa-building-o"></i>
+            Empresas
+            <span class="pull-right">
+                {{#link-to 'vendas.nova'}}<i class="fa fa-plus"></i>{{/link-to}}
+            </span>
+        </h2>
+    </div>
+    <div class="panel-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Data da compra</th>
+                    <th>Valor</th>
+                    <th>Comissão</th>
+                    <th>Empresa</th>
+                    <th>Cliente</th>
+                    <th class="actions"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each model as |venda|}}
+                <tr>
+                    <td>{{venda.dataCompra}}</td>
+                    <td>{{venda.valor}}</td>
+                    <td>{{venda.comissao}}</td>
+                    <td>{{venda.empresa}}</td>
+                    <td>{{venda.cliente}}</td>
+                    <td>
+                        {{#link-to 'vendas.editar' venda.id class='btn btn-sm btn-default' active=false}}<i class="fa fa-pencil"></i>{{/link-to}}
+                        <button {{action 'remove' venda}} class='btn btn-sm btn-danger' active=false}}><i class="fa fa-times"></i></button>
+                    </td>
+                </tr>
+                {{else}}
+                <tr class="empty text-center">
+                    <td colspan="5">Nenhuma venda foi encontrada.</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>
