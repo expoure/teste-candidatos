@@ -7,7 +7,7 @@ export default Route.extend({
     },
 
     renderTemplate() {
-        // Renderiza um template diferente do padrão (que seria empresas/nova)
+        // Renderiza um template diferente do padrão (que seria cliente/novo)
         this.render('vendas/form');
     }
 });

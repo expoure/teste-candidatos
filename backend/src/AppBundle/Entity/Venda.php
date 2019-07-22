@@ -25,7 +25,7 @@ class Venda
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="data", type="datetime")
+     * @ORM\Column(name="dataCompra", type="datetime")
      * 
      * @Assert\NotBlank(
      *     message = "O preenchimento da data é obrigatório.",
@@ -36,7 +36,7 @@ class Venda
      * )
      * 
      */
-    private $data;
+    private $dataCompra;
 
     /**
      * @var string

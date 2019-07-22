@@ -1,5 +1,4 @@
-import Controller from '@ember/controller';
-import { inject as service } from '@ember/service';
+import Route from '@ember/routing/route';
 
-export default Controller.extend({
+export default Route.extend({
 });
