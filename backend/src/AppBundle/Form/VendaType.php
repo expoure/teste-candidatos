@@ -2,12 +2,12 @@
 
 namespace App\AppBundle\Form;
 
-use App\AppBundle\Entity\Empresa;
+use App\AppBundle\Entity\Venda;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class EmpresaType extends AbstractType
+class VendaType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -16,12 +16,11 @@ class EmpresaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nome')
-            ->add('telefone')
-            ->add('email')
-            ->add('endereco')
-            ->add('descricao')
-            ->add('imagem');
+            ->add('data')
+            ->add('valor')
+            ->add('comissao')
+            ->add('empresa')
+            ->add('cliente');
     }
 
     /**
@@ -30,7 +29,7 @@ class EmpresaType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => App\AppBundle\Entity\Empresa::class
+            'data_class' => App\AppBundle\Entity\Venda::class
         ));
     }
 
@@ -39,6 +38,6 @@ class EmpresaType extends AbstractType
      */
     public function getName()
     {
-        return 'empresa';
+        return 'venda';
     }
 }
